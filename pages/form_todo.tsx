@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 // import Head from 'next/head'
 // import Link from 'next/link'
-import { useState } from 'react'
 // import styles from '../styles/Home.module.css'
+import { useState, useEffect } from 'react'
+import { addTodo } from './add_todo'
+import { getTodo } from './get_todo'
 
-type Todo = {
+export type Todo = {
   value: string
   readonly id: number
 }
@@ -26,6 +28,23 @@ const Form: NextPage = () => {
     // フォームへの入力をクリアする
     setText('')
   }
+
+  /**
+   * キー名 'local-todos' のデータを取得
+   * 第 2 引数の配列が空なのでコンポーネントのマウント時のみに実行される
+   */
+  useEffect(() => {
+    getTodo()
+      .then((values) => setTodos(values))
+      .catch((err) => console.error(err))
+  }, [])
+
+  /**
+   * todos ステートが更新されたら、その値を保存
+   */
+  useEffect(() => {
+    addTodo(todos).catch((err) => console.error(err))
+  }, [todos])
 
   return (
     <div>
