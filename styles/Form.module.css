@@ -1,0 +1,110 @@
+.container{
+    background-color: #d9d9d9;
+    min-height: 100vh;
+    padding: 55px 0;
+}
+
+.body{
+  max-width: 80%;
+  margin: 0 auto 55px;
+  padding: 20px 35px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #000;
+}
+.hoge {
+  max-width: 464px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+}
+.calendar{
+    
+}
+.field{
+    display: flex;
+    color: black;
+    font-size: 20px;
+    padding: 50px 100px;
+    background-color: #ffffff;
+    justify-content: center;
+}
+@media screen and (max-width: 970px) {
+    .field{
+      max-width: 90%;
+    }
+  }
+
+.buttonWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+  }
+  
+  .buttonWrap a{
+    display: block;
+    padding: 10px;
+    background: #e0271e;
+    color: #fff;
+    width : 25%;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 7px 0 #650c07;
+  }
+  @media screen and (max-width: 970px) {
+    .buttonWrap a{
+      max-width: 90%;
+    }
+  }
+  
+  .buttonWrap a:hover{
+    transform: translateY(5px);
+    text-decoration: none;
+    box-shadow: 0 4px 0 #650c07;
+  }
+
+  .create_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+  }
+  .create_button input{
+    display: block;
+    padding: 10px;
+    background: #e0271e;
+    color: #fff;
+    width: 25%;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 7px 0 #650c07;
+    border-style: none;
+  }
+
+  .create_button a{
+    display: block;
+    padding: 20px;
+    background: #e0271e;
+    color: #fff;
+    width : 25%;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 7px 0 #650c07;
+  }
+
+  
+  @media screen and (max-width: 970px) {
+    .create_button a{
+      max-width: 90%;
+    }
+  }
+
+  .create_button a:hover{
+    transform: translateY(5px);
+    text-decoration: none;
+    box-shadow: 0 4px 0 #650c07;
+  }
+
+
