@@ -3,13 +3,7 @@ import type { NextPage } from 'next'
 // import Link from 'next/link'
 // import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
-import { addTodo, getTodo } from '../lib/todo'
-
-export type Todo = {
-  title: string
-  limit: Date
-  readonly id: number
-}
+import { Todo, addTodo, getTodo } from '../lib/todo'
 
 const Form: NextPage = () => {
   const [text, setText] = useState('')
@@ -26,7 +20,7 @@ const Form: NextPage = () => {
       limit: new Date(limit),
       id: new Date().getTime(),
     }
-    void addTodo(newTodo).then(r => r)
+    void addTodo(newTodo).then((r) => r)
     setTodos([newTodo, ...todos])
     // フォームへの入力をクリアする
     setText('')

@@ -1,10 +1,15 @@
 import localforage from 'localforage'
-import { Todo } from '../pages/form_todo'
+
+export type Todo = {
+  title: string
+  limit: Date
+  readonly id: number
+}
 
 export async function addTodo(todo: Todo): Promise<void> {
   // todoを追加する
-  const todos = await getTodo();
-  const newTodos = [todo, ...todos];
+  const todos = await getTodo()
+  const newTodos = [todo, ...todos]
   await localforage.setItem('local-todos', newTodos)
 }
 
