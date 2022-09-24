@@ -3,16 +3,17 @@ import type { NextPage } from 'next'
 // import Link from 'next/link'
 // import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
-import { addTodo } from './add_todo'
-import { getTodo } from './get_todo'
+import { addTodo, getTodo } from '../lib/todo'
 
 export type Todo = {
-  value: string
+  title: string
+  limit: Date
   readonly id: number
 }
 
 const Form: NextPage = () => {
   const [text, setText] = useState('')
+  const [limit, setLimit] = useState('')
   const [todos, setTodos] = useState<Todo[]>([])
   // todos ステートを更新する関数
   const handleOnSubmit = function (): void {
@@ -21,12 +22,14 @@ const Form: NextPage = () => {
 
     // 新しい Todo を作成
     const newTodo: Todo = {
-      value: text,
+      title: text,
+      limit: new Date(limit),
       id: new Date().getTime(),
     }
     setTodos([newTodo, ...todos])
     // フォームへの入力をクリアする
     setText('')
+    setLimit('')
   }
 
   /**
@@ -54,12 +57,25 @@ const Form: NextPage = () => {
           handleOnSubmit()
         }}
       >
-        <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
-        <input type='submit' value='追加' onSubmit={handleOnSubmit} />
+        <div className='field'>
+          <label>
+            <i className='calendar'></i>目標
+          </label>
+          <input type='text' value={text} onChange={(e) => setText(e.target.value)} />
+        </div>
+        <div className='field'>
+          <label>
+            <i className='calendar'></i>期日
+          </label>
+          <input type='date' value={limit} onChange={(e) => setLimit(e.target.value)} />
+        </div>
+        <div className='create_button'>
+          <input type='submit' value='追加' onSubmit={handleOnSubmit} />
+        </div>
       </form>
       <ul>
         {todos.map((todo) => {
-          return <li key={todo.id}>{todo.value}</li>
+          return <li key={todo.id}>{`${todo.title} ${todo.limit.toLocaleDateString()}`}</li>
         })}
       </ul>
     </div>
