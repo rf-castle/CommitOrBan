@@ -26,6 +26,7 @@ const Form: NextPage = () => {
       limit: new Date(limit),
       id: new Date().getTime(),
     }
+    void addTodo(newTodo).then(r => r)
     setTodos([newTodo, ...todos])
     // フォームへの入力をクリアする
     setText('')
@@ -45,9 +46,6 @@ const Form: NextPage = () => {
   /**
    * todos ステートが更新されたら、その値を保存
    */
-  useEffect(() => {
-    addTodo(todos).catch((err) => console.error(err))
-  }, [todos])
 
   return (
     <div>
