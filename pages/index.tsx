@@ -3,6 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Top.module.css'
 
+import Link from 'next/link'
+
+
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -36,7 +40,10 @@ const Home: NextPage = () => {
           <p>テキストテキストテキストテキスト</p>
         </div>
 
-      </main >
+        <Link href='/new_todo'>
+          <a>新規TODO</a>
+        </Link>
+      </main>
 
       <footer className={styles.footer}>
 
