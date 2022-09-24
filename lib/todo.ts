@@ -1,9 +1,11 @@
 import localforage from 'localforage'
 import { Todo } from '../pages/form_todo'
 
-export async function addTodo(todos: Todo[]): Promise<void> {
+export async function addTodo(todo: Todo): Promise<void> {
   // todoを追加する
-  await localforage.setItem('local-todos', todos)
+  const todos = await getTodo();
+  const newTodos = [todo, ...todos];
+  await localforage.setItem('local-todos', newTodos)
 }
 
 export async function getTodo(): Promise<Todo[]> {
