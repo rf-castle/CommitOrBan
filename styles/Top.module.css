@@ -1,0 +1,66 @@
+.title{
+    display:flex;
+    align-items: center;
+    font-size:150%;
+}
+
+.login{
+    margin-left: auto;
+    background-color: yellow;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 550;
+    border: 2px solid black;
+    width: 190px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.explosion{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right:20px;
+}
+
+.dead{
+    text-align: right;
+    margin-left:-150px;
+    font-size: 200%;
+    z-index: 1;
+    position: relative;
+}
+
+.tutorial{
+    text-align: center;
+    font-size: 200%;
+}
+
+@media(max-width: 970px){
+    .title{
+        font-size: 80%;
+    }
+
+    .login{
+        margin-left: auto;
+        background-color: yellow;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: 550;
+        border: 1px solid black;
+        width: 100px;
+        padding: 10px;
+        display: inline-block;
+        border-radius: 20px 20px 20px 20px;
+    }    
+    .dead{
+        font-size:15px;
+        position: absolute;
+        margin-left:250px;
+    } 
+    .tutorial{
+        font-size:100%;
+    }
+
+}
