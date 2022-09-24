@@ -1,0 +1,75 @@
+.container{
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 55px 0;
+}
+
+.tabHeader{
+  max-width: 80%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 970px) {
+  .tabHeader{
+    max-width: 90%;
+  }
+}
+
+.tabHeader ul{
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tabHeader li{
+  list-style: none;
+  border-radius: 7px 7px 0 0;
+  padding: 5px 12px;
+  background-color: #999;
+    color: #fff;
+}
+
+.tabHeader .active{
+  background-color: red;
+}
+
+.tabBody{
+  max-width: 80%;
+  margin: 0 auto 55px;
+  padding: 20px 35px;
+  background-color: #fff;
+  font-size: 16px;
+}
+@media screen and (max-width: 970px) {
+  .tabBody{
+    max-width: 90%;
+    padding: 20px 10px;
+  }
+}
+
+.row{
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.buttonWrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWrap a{
+  display: block;
+  padding: 10px;
+  background: #e0271e;
+  color: #fff;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 7px 0 #650c07
+}
+
+.buttonWrap a:hover{
+  transform: translateY(5px);
+  text-decoration: none;
+  box-shadow: 0 4px 0 #650c07;
+}
