@@ -46,6 +46,10 @@
   }
 }
 
+.tabBody ul{
+  padding: 0;
+}
+
 .row{
   list-style: none;
   display: flex;
@@ -63,9 +67,15 @@
   padding: 10px;
   background: #e0271e;
   color: #fff;
-  width: 300px;
+  width : 25%;
+  min-width: 100px;
   text-align: center;
-  box-shadow: 0 7px 0 #650c07
+  box-shadow: 0 7px 0 #650c07;
+}
+@media screen and (max-width: 970px) {
+  .buttonWrap a{
+    max-width: 90%;
+  }
 }
 
 .buttonWrap a:hover{

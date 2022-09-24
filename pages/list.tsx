@@ -9,7 +9,10 @@ import React, { useState } from 'react';
 // leaf start code
 import { createRoot } from 'react-dom/client'
 import { style } from '@mui/system'
-const Home: NextPage =  () => {
+const List: NextPage = () => {
+  // TODO: todoのローカルストレージをedit
+  // TODO: checkを入れたら未達成→達成
+
   // todo一覧のデータ
   const data:{done:boolean,limit:string,todo:string}[] = [{done:true,limit:'2022-09-24',todo:"-10KG"},{done:false,limit:'2022-09-25',todo:"タスク１を終わらせる"},{done:false,limit:'2022-09-26',todo:"タスク2を終わらせる"}]
 
@@ -31,6 +34,16 @@ const Home: NextPage =  () => {
     }
   }
 
+  // TODO:この辺でif文使ってdoneがfalseだったらdisabled=false。
+  // function changeDisabled(event: React.MouseEvent<HTMLLIElement, MouseEvent> | undefined) {
+  //   if (!(event?.target instanceof HTMLLIElement)) {
+  //   return;
+  // }
+  //   if (event.target.className !== 'active') {
+  //     setDone(!done);
+  //     setShowDone(!showDone);
+  //   }
+  // }
   // todoのループ
   const rows = showData.map((d, index) =>
     <li className={styles.row}>
@@ -79,4 +92,4 @@ const Home: NextPage =  () => {
   )
 }
 
-export default Home
+export default List
