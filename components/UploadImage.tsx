@@ -1,9 +1,9 @@
 import { Button } from '@mui/material'
 import React from 'react'
-import { useHooks } from '../lib/hooks'
+import { useFileStores } from '../lib/hooks'
 
 const UploadImage = (props: {}): JSX.Element => {
-  const { handleFiles } = useHooks()
+  const { handleFiles } = useFileStores()
   return (
     <Button variant='contained' component='label'>
       Upload Image

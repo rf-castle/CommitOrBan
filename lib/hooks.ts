@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react'
 import { addPhoto, DarkHistoryPhoto } from './dark_history_photo'
 
-export const useFileStore = function (): { handleFiles: ChangeEventHandler<HTMLInputElement> } {
+export const useFileStores = function (): { handleFiles: ChangeEventHandler<HTMLInputElement> } {
   const handleFiles: ChangeEventHandler<HTMLInputElement> = (event) => {
     const func = async (): Promise<void> => {
       const files = event.currentTarget.files
