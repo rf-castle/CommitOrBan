@@ -1,7 +1,7 @@
 import {readdirSync, readFileSync} from 'fs';
 
 
-export const pickImage = () => {
+export const pickImage = (): Buffer => {
   const imageArray = readdirSync('./images/').filter(file => {
     return file.endsWith(".png")
   });

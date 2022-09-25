@@ -2,12 +2,12 @@ import Twitter from 'twitter';
 import {TWITTER_CLIENT_ID, TWITTER_CLIENT_SECRET} from '../constant';
 
 
-export const postImageToTwitter = async (token: string, token_secret: string, imageData: any): Promise<void> => {
+export const postImageToTwitter = async (token: string, tokenSecret: string, imageData: any): Promise<void> => {
   const client = new Twitter({
     consumer_key: TWITTER_CLIENT_ID,
     consumer_secret: TWITTER_CLIENT_SECRET,
     access_token_key: token,
-    access_token_secret: token_secret
+    access_token_secret: tokenSecret
   });
   const params =
       typeof imageData === "string"

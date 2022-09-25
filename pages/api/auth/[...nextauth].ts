@@ -19,7 +19,7 @@ const authOptions: NextAuthOptions = {
     },
     jwt({ token, account }) {
       // Persist the OAuth access_token to the token right after signin
-      if (account) {
+      if (account != null) {
         token.accessToken = account.oauth_token
         token.accessTokenSecret = account.oauth_token_secret
       }
