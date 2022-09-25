@@ -1,15 +1,16 @@
 import type { NextPage } from 'next'
 // import Head from 'next/head'
 // import Link from 'next/link'
-import styles from '../styles/Form.module.css'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Todo, addTodo, getTodo } from '../lib/todo'
-import Link from 'next/link'
+import styles from '../styles/Form.module.css'
 
 const Form: NextPage = () => {
   const [text, setText] = useState('')
   const [limit, setLimit] = useState('')
   const [todos, setTodos] = useState<Todo[]>([])
+  const today = new Date()
 
   // todos ステートを更新する関数
   const handleOnSubmit = function (): void {
@@ -21,13 +22,23 @@ const Form: NextPage = () => {
       done: false,
       title: text,
       limit: new Date(limit),
-      id: new Date().getTime(),
+      id: today.getTime(),
     }
     void addTodo(newTodo).then((r) => r)
     setTodos([newTodo, ...todos])
     // フォームへの入力をクリアする
     setText('')
     setLimit('')
+  }
+
+  function convertDateToDateTime(day: Date): string {
+    const year = day.getFullYear()
+    const month = `0${day.getMonth() + 1}`.slice(-2)
+    const date = day.getDate()
+    const hour = `0${day.getHours() + 1}`.slice(-2)
+    const minute = day.getMinutes()
+    const dateTime = `${year}-${month}-${date}T${hour}:${minute}`
+    return dateTime
   }
 
   /**
@@ -64,7 +75,12 @@ const Form: NextPage = () => {
               <label>
                 <i className={styles.calendar}></i>期日
               </label>
-              <input type='datetime-local' value={limit} onChange={(e) => setLimit(e.target.value)} />
+              <input
+                type='datetime-local'
+                value={limit}
+                onChange={(e) => setLimit(e.target.value)}
+                min={convertDateToDateTime(today)}
+              />
             </div>
             <div className={styles.create_button}>
               <input type='submit' value='追加' onSubmit={handleOnSubmit} />
