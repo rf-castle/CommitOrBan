@@ -1,10 +1,9 @@
-import type { NextPage } from 'next'
-// import Head from 'next/head'
-// import Link from 'next/link'
-import styles from '../styles/Form.module.css'
-import { useState, useEffect } from 'react'
-import { Todo, addTodo, getTodo } from '../lib/todo'
+/* eslint-disable*/
 import Link from 'next/link'
+import type { NextPage } from 'next'
+import { useState } from 'react'
+import { Todo, addTodo } from '../lib/todo'
+import styles from '../styles/Form.module.css'
 
 const Form: NextPage = () => {
   const [text, setText] = useState('')
@@ -31,16 +30,6 @@ const Form: NextPage = () => {
   }
 
   /**
-   * キー名 'local-todos' のデータを取得
-   * 第 2 引数の配列が空なのでコンポーネントのマウント時のみに実行される
-   */
-  // useEffect(() => {
-  //   getTodo()
-  //     .then((values) => setTodos(values))
-  //     .catch((err) => console.error(err))
-  // }, [])
-
-  /**
    * todos ステートが更新されたら、その値を保存
    */
 
@@ -52,8 +41,11 @@ const Form: NextPage = () => {
           handleOnSubmit()
         }}
       >
-        <div className={styles.hoge}>
+        <div className={styles.wrap}>
           <div className={styles.body}>
+            <div className={styles.title}>
+              <h1>目標設定をしよう！！</h1>
+            </div>
             <div className={styles.field}>
               <label>
                 <i className={styles.calendar}></i>目標
@@ -64,7 +56,11 @@ const Form: NextPage = () => {
               <label>
                 <i className={styles.calendar}></i>期日
               </label>
-              <input type='datetime-local' value={limit} onChange={(e) => setLimit(e.target.value)} />
+              <input
+                type='datetime-local'
+                value={limit}
+                onChange={(e) => setLimit(e.target.value)}
+              />
             </div>
             <div className={styles.create_button}>
               <input type='submit' value='追加' onSubmit={handleOnSubmit} />
@@ -72,19 +68,14 @@ const Form: NextPage = () => {
           </div>
         </div>
         <div className={styles.buttonWrap}>
-          {/* ここにボタンを記述 （suzuki） */}
           <Link href='/list'>
             <a>一覧へ</a>
           </Link>
         </div>
       </form>
-      <ul>
-        {/* {todos.map((todo) => {
-          return <li key={todo.id}>{`${todo.title} ${todo.limit.toLocaleDateString()}`}</li>
-        })} */}
-      </ul>
     </div>
   )
 }
 
 export default Form
+/* eslint-disable*/

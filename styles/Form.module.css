@@ -5,29 +5,44 @@
 }
 
 .body{
-  max-width: 80%;
+  text-align: center;
   margin: 0 auto 55px;
-  padding: 20px 35px;
+  padding: 20px 0;
   background-color: #fff;
   font-size: 16px;
   color: #000;
 }
-.hoge {
-  max-width: 464px;
+.title {
+  margin-bottom: 40px;
+}
+.wrap {
+  max-width: 80%;
   margin: 0 auto;
   text-align: left;
   padding: 0;
 }
 .calendar{
-    
 }
 .field{
-    display: flex;
+    font-weight: bold;
     color: black;
     font-size: 20px;
-    padding: 50px 100px;
     background-color: #ffffff;
-    justify-content: center;
+    max-width: 40%;
+    margin: 0 auto 20px;
+}
+.field label,.field input {
+  display: flex;
+  width: 100%;
+}
+.field input {
+  height: 50px;
+  background-color: #D9D9D9;
+  border: none;
+}
+.field input:focus {
+  outline: none;
+  border: 2px solid #e0271e;
 }
 @media screen and (max-width: 970px) {
     .field{
@@ -81,27 +96,14 @@
     text-align: center;
     box-shadow: 0 7px 0 #650c07;
     border-style: none;
-  }
-
-  .create_button a{
-    display: block;
-    padding: 20px;
-    background: #e0271e;
-    color: #fff;
-    width : 25%;
-    min-width: 100px;
-    text-align: center;
-    box-shadow: 0 7px 0 #650c07;
-  }
-
-  
+  }  
   @media screen and (max-width: 970px) {
     .create_button a{
       max-width: 90%;
     }
   }
 
-  .create_button a:hover{
+  .create_button input:hover{
     transform: translateY(5px);
     text-decoration: none;
     box-shadow: 0 4px 0 #650c07;

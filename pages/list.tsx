@@ -1,9 +1,11 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '../styles/List.module.css'
+/* eslint-disable*/
 import Link from 'next/link'
 import { useState } from 'react'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Modal from './modal'
 import { Todo, getTodo, editTodo } from '../lib/todo'
+import styles from '../styles/List.module.css'
 
 const List: NextPage = () => {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -25,27 +27,66 @@ const List: NextPage = () => {
       return
     }
     if (event.target.className !== 'active') {
-      setDone(!done)
       setShowDone(!showDone)
+      setDone(!done)
     }
+  }
+
+  // modal
+  const [showModal, setShowModal] = useState(false)
+
+  // doneクリック関数
+  function clickDone(d: Todo) {
+    setShowModal(true)
+    editTodo(d.id)
+  }
+
+  function closeShowModal() {
+    setShowModal(false)
   }
 
   // todoのループ
   const rows = showData.map((d, index) => (
     <li className={styles.row} key={`todo${index}`}>
-      <input
-        className={styles.checkbox}
-        type='checkbox'
-        defaultChecked={done}
-        disabled={done}
-        onClick={() => editTodo(d.id)}
-      />
-      <div className={styles.limit}>
+      <div>
         {d.limit.toLocaleDateString()} {d.limit.toLocaleTimeString()}
       </div>
       <div className={styles.todo}>{d.title}</div>
+      {!done && (
+        <div className={styles.doneBtn} onClick={() => clickDone(d)}>
+          done
+        </div>
+      )}
     </li>
   ))
+
+  // 期限切れのtodoの数をcount
+  function countNotDone() {
+    const showTodos = showData
+    const now = new Date()
+    if (!done) {
+      // 日付の比較
+      const result = showTodos.filter((t) => {
+        return t.limit < now
+      })
+      return result
+    }
+  }
+
+  // 期限切れがあった時に変更&post
+  function commitBan() {
+    const countNotDones = countNotDone()
+    if (countNotDones) {
+      countNotDones.forEach((todo: Todo) => {
+        // twitterにpost
+
+        // doneの変更
+        editTodo(todo.id)
+      })
+    }
+  }
+  commitBan()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -76,9 +117,11 @@ const List: NextPage = () => {
             <a>目標設定へ</a>
           </Link>
         </div>
+        <Modal showFlag={showModal} closeModal={closeShowModal} />
       </main>
     </div>
   )
 }
 
 export default List
+/* eslint-disable*/
