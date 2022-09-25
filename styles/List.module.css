@@ -1,0 +1,130 @@
+.container{
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 55px 0;
+}
+
+.tabHeader{
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 970px) {
+  .tabHeader{
+    max-width: 90%;
+  }
+}
+
+.tabHeader ul{
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tabHeader li{
+  list-style: none;
+  border-radius: 7px 7px 0 0;
+  padding: 5px 12px;
+  background-color: #999;
+    color: #fff;
+}
+
+.tabHeader .active{
+  background-color: red;
+}
+
+.tabBody{
+  max-width: 80%;
+  margin: 0 auto 55px;
+  padding: 20px 35px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #000;
+}
+@media screen and (max-width: 970px) {
+  .tabBody{
+    max-width: 90%;
+    padding: 20px 10px;
+  }
+}
+
+.tabBody ul{
+  padding: 0;
+}
+
+.row{
+  list-style: none;
+  display: flex;
+  align-items: start;
+  gap: 20px;
+}
+
+.row div {
+  margin-bottom: 8px;
+}
+
+.row div:nth-child(1) {
+ min-width: 140px;
+ max-width: 200px;
+}
+@media screen and (max-width: 970px) {
+.row div:nth-child(1) {
+    max-width: 90%;
+  }
+}
+
+.row div:nth-child(2) {
+ max-width: calc(100% - 140px - 60px - 40px);
+ word-break: break-all;
+}
+@media screen and (max-width: 970px) {
+.row div:nth-child(2) {
+ max-width: calc(100% - 140px - 40px);
+  }
+}
+
+.row div:nth-child(3) {
+  margin-left: auto;
+}
+
+.doneBtn {
+  color: #fff;
+  background-color: #e0271e;
+  padding: 5px 10px;
+  box-shadow: 0 4px 0 #650c07;
+  cursor: pointer;
+}
+
+.doneBtn:hover{
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #650c07;
+
+}
+
+.buttonWrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWrap a{
+  display: block;
+  padding: 10px;
+  background: #e0271e;
+  color: #fff;
+  width : 25%;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 7px 0 #650c07;
+}
+@media screen and (max-width: 970px) {
+  .buttonWrap a{
+    max-width: 90%;
+  }
+}
+
+.buttonWrap a:hover{
+  transform: translateY(5px);
+  text-decoration: none;
+  box-shadow: 0 4px 0 #650c07;
+}

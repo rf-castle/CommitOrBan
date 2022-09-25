@@ -17,5 +17,8 @@
   // VS Code の CSS, SCSS の Lint オフ
   // Stylelint とのバッティング回避
   "css.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+  "cSpell.words": [
+    "localforage"
+  ]
 }
