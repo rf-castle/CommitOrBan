@@ -17,6 +17,9 @@ const authOptions: NextAuthOptions = {
       session.token_secret = token.accessTokenSecret
       return session // The return type will match the one returned in `useSession()`
     },
+    redirect({url, baseUrl}){
+      return '/list'
+    },
     jwt({ token, account }) {
       // Persist the OAuth access_token to the token right after signin
       if (account != null) {

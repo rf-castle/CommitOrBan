@@ -4,9 +4,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Top.module.css'
+import {signIn} from 'next-auth/react';
 
 
 const Home: NextPage = () => {
+  const onLoginClick = async () => {
+    await signIn('twitter');
+  };
   return (
     <div className={styles.topContainer}>
       <Head>
@@ -17,7 +21,7 @@ const Home: NextPage = () => {
       <header className={styles.header}>
         <div className={styles.title}>
           <h1 className={styles.headerLogo}>COMMIT or BAN!!</h1>
-          <a className={styles.login}>
+          <a className={styles.login} onClick={onLoginClick}>
             ログイン
           </a>
         </div>
@@ -95,7 +99,7 @@ const Home: NextPage = () => {
                 <Image src='/sayhi.png' alt='ポセさん' width={150} height={280} />
               </figure>
               <div className={styles.topBtn}>
-                <span className={styles.topBtn__link}>ログインする</span>
+                <span className={styles.topBtn__link} onClick={onLoginClick}>ログインする</span>
               </div>
             </div>
         </div>
