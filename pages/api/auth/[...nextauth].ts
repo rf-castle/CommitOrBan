@@ -1,18 +1,34 @@
-import NextAuth from 'next-auth'
-import TwitterProvider from 'next-auth/providers/twitter'
+import NextAuth, {NextAuthOptions} from 'next-auth'
+import Twitter from 'next-auth/providers/twitter';
+import {TWITTER_CLIENT_ID, TWITTER_CLIENT_SECRET} from "../../../constant";
 
-export const authOptions = {
-  // Configure one or more authentication providers
+const authOptions: NextAuthOptions = {
   // Todo: Redirect URIを設定する
   // Todo: redirectしたら、目標一覧ページに飛ばす
   providers: [
-    TwitterProvider({
-      clientId: process.env.TWITTER_CLIENT_ID as string,
-      clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
-      version: "2.0"
+    Twitter({
+      clientId: TWITTER_CLIENT_ID,
+      clientSecret: TWITTER_CLIENT_SECRET,
     }),
-    // ...add more providers here
   ],
+  callbacks: {
+    session({ session, token, user }) {
+      session.token = token.accessToken
+      session.token_secret = token.accessTokenSecret
+      return session // The return type will match the one returned in `useSession()`
+    },
+    jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.oauth_token
+        token.accessTokenSecret = account.oauth_token_secret
+      }
+      return token
+    }
+  },
 }
+
+
+
 
 export default NextAuth(authOptions)
