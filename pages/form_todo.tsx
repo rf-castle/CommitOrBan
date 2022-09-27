@@ -2,8 +2,9 @@
 import Link from 'next/link'
 import type { NextPage } from 'next'
 import styles from '../styles/Form.module.css'
-import { useState } from 'react'
-import { Todo, addTodo } from '../lib/todo'
+import { useState, useEffect } from 'react'
+import UploadImage from '../components/UploadImage'
+import { Todo, addTodo, getTodo } from '../lib/todo'
 
 const Form: NextPage = () => {
   const [text, setText] = useState('')
@@ -44,11 +45,11 @@ const Form: NextPage = () => {
    * キー名 'local-todos' のデータを取得
    * 第 2 引数の配列が空なのでコンポーネントのマウント時のみに実行される
    */
-  // useEffect(() => {
-  //   getTodo()
-  //     .then((values) => setTodos(values))
-  //     .catch((err) => console.error(err))
-  // }, [])
+  useEffect(() => {
+    getTodo()
+      .then((values) => setTodos(values))
+      .catch((err) => console.error(err))
+  }, [])
 
   /**
    * todos ステートが更新されたら、その値を保存
@@ -83,6 +84,12 @@ const Form: NextPage = () => {
                 onChange={(e) => setLimit(e.target.value)}
                 min={convertDateToDateTime(today)}
               />
+            </div>
+            <div className={styles.field}>
+              <label>
+                <i className='image'></i>画像
+              </label>
+              <UploadImage />
             </div>
             <div className={styles.create_button}>
               <input type='submit' value='追加' onSubmit={handleOnSubmit} />
